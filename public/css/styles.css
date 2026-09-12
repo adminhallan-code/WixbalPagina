@@ -813,6 +813,23 @@ body.is-locked { overflow: hidden; }
   .bracket--about { top: clamp(30px, 5.5vh, 96px); }
 }
 
+/* ===================== Servicios: un punto más compacta ===================
+   Cambio acotado y deliberadamente conservador: solo se reduce el titular y se
+   recorta aire vertical (cabecera, carril y cenefa de cierre). No se tocan las
+   tarjetas, ni los textos, ni las flechas, ni el ancho de nada.
+
+   Va dentro de la media query para no pisar las reglas de móvil, y el titular
+   se acota con .services para no afectar al de Hotelería, que comparte clase.
+   ========================================================================== */
+
+@media (min-width: 1100px) {
+  .services .display { font-size: 96px; }
+
+  .services__head { padding-top: 48px; }
+  .services__rail { margin-top: 40px; }
+  .ornament { margin-top: 56px; padding-bottom: 56px; }
+}
+
 /* ============================== ANIMACIONES =============================== */
 
 @keyframes wx-spin { to { transform: rotate(360deg); } }
