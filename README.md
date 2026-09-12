@@ -43,31 +43,6 @@ idéntico sin deformarse:
   (`public/css/responsive.css`), conservando colores, tipografías y componentes:
   menú hamburguesa, héroe en vertical, tarjetas deslizables, listas apiladas.
 
-### Una sección = una pantalla
-
-En escritorio las cinco secciones miden **exactamente una pantalla** y el scroll
-se ajusta a ellas (`scroll-snap`). La pieza clave es:
-
-```css
---fh: max(660px, calc(100vh / var(--zoom, 1)));
-```
-
-`--fh` es la altura del viewport expresada en píxeles de diseño: como el lienzo va
-escalado por `zoom`, hay que dividir entre ese factor para que `height: var(--fh)`
-ocupe justo una pantalla. El espaciado vertical está ajustado a ese marco
-(~800 px de diseño en un monitor típico) y los bloques flexibles absorben la
-diferencia entre un monitor y otro:
-
-- las tarjetas de servicios crecen con el carril, entre 200 y 360 px;
-- el cierre de cada sección (cenefa, botón, barra inferior) se ancla abajo con
-  `margin-top: auto`;
-- los títulos grandes usan `clamp()` en función de `--fh`.
-
-Comprobado sin recortes ni desbordes en 1366×660, 1440×800, 1920×1040 y 2560×1300.
-
-En móvil no se aplica nada de esto: las secciones recuperan su altura natural y
-el scroll es normal.
-
 ### Interacciones
 
 | Elemento | Comportamiento |
