@@ -43,6 +43,36 @@ idéntico sin deformarse:
   (`public/css/responsive.css`), conservando colores, tipografías y componentes:
   menú hamburguesa, héroe en vertical, tarjetas deslizables, listas apiladas.
 
+### Hotelería a tamaño de pantalla
+
+Las secciones conservan su altura natural **salvo Hotelería**, que en escritorio
+ocupa exactamente una pantalla. La pieza clave es:
+
+```css
+--fh: max(660px, calc(100vh / var(--zoom, 1)));
+```
+
+`--fh` es la altura del viewport expresada en píxeles de diseño: como el lienzo va
+escalado con `zoom`, hay que dividir entre ese factor para que `var(--fh)` valga
+justo una pantalla.
+
+El bloque que lo aplica está **al final de `styles.css`**, a propósito: sus reglas
+deben ganar a los márgenes y tamaños fijos declarados antes en cada componente.
+Dentro de él:
+
+- los tamaños que más pesan en vertical (titular, filas, chips, botón) van con
+  `clamp()` atado a `--fh`, para que también quepa en monitores bajos;
+- se usa `min-height`, no `height`: si una pantalla fuera más baja de lo que el
+  contenido necesita, la sección crece en lugar de recortarse o solaparse;
+- el botón de cierre se ancla abajo con `margin-top: auto`.
+
+Comprobado exactamente en 1 pantalla, sin recortes ni solapes, en 1366×660,
+1366×700, 1440×800, 1920×1040 y 2560×1300. En móvil no se aplica nada: la sección
+recupera su altura natural.
+
+Para dar este mismo trato a otra sección, se replica ese bloque cambiando el
+selector; el resto de la hoja no se toca.
+
 ### Interacciones
 
 | Elemento | Comportamiento |
