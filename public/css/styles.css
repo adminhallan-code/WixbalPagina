@@ -677,6 +677,91 @@ a { color: inherit; text-decoration: none; cursor: pointer; }
 
 body.is-locked { overflow: hidden; }
 
+/* ================== Hotelería a tamaño de pantalla ========================
+   Esta sección no se compone contra el lienzo de 1440 px como el resto, sino
+   contra la forma real de la pantalla. El truco es el par zoom/width: el
+   lienzo va escalado por --zoom (hasta 1.25 en monitores anchos), así que
+   aquí se aplica el zoom inverso. La sección sigue ocupando la misma caja que
+   las demás (el ancho se queda en auto), pero por dentro 1 px = 1 px real, de
+   modo que las medidas en px y vh valen lo que dicen.
+
+   Con eso la sección cabe en una pantalla mostrando los cuatro hospedajes y
+   la foto completa, sin achatar nada: lo que cambia es la composición, no las
+   proporciones de cada pieza.
+   ========================================================================== */
+
+@media (min-width: 1100px) {
+  .hotels {
+    zoom: calc(1 / var(--zoom, 1));
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    --pad: clamp(32px, 3.6vw, 72px);
+  }
+
+  .hotels .zig { margin-top: clamp(14px, 2vh, 26px); flex: none; }
+
+  .hotels__head { padding-top: clamp(18px, 2.8vh, 34px); flex: none; }
+  .hotels .display {
+    margin-top: clamp(8px, 1.4vh, 18px);
+    font-size: clamp(50px, 8.4vh, 104px);
+  }
+  .hotels__lede {
+    margin: 0 0 clamp(2px, .8vh, 10px);
+    font-size: clamp(15px, 1.9vh, 20px);
+    max-width: 34ch;
+  }
+
+  .hotels__grid {
+    flex: 1; min-height: 0;
+    padding-top: clamp(16px, 2.4vh, 34px);
+    grid-template-columns: minmax(0, 1fr) clamp(340px, 36%, 620px);
+    gap: clamp(26px, 3vw, 56px);
+  }
+
+  .hotels__list { justify-content: space-between; }
+
+  .hrow {
+    padding: clamp(7px, 1.2vh, 16px) 0;
+    grid-template-columns: clamp(32px, 3.2vw, 60px) minmax(0, 1fr) auto;
+    gap: clamp(12px, 1.5vw, 26px);
+  }
+  .hrow__num { font-size: clamp(19px, 2.6vh, 30px); }
+  .hrow__title { font-size: clamp(18px, 2.6vh, 32px); line-height: 1.12; }
+  .hrow__text {
+    margin-top: clamp(3px, .6vh, 8px); max-width: 48ch;
+    font-size: clamp(11px, 1.45vh, 14px); line-height: 1.5;
+  }
+  .hrow__price-value {
+    margin-top: clamp(3px, .6vh, 8px);
+    font-size: clamp(16px, 2.2vh, 24px);
+  }
+
+  .chips { margin-top: clamp(9px, 1.6vh, 20px); gap: clamp(6px, .7vw, 10px); }
+  .chip {
+    padding: clamp(6px, 1vh, 11px) clamp(10px, .9vw, 16px);
+    font-size: clamp(9px, 1.1vh, 11px);
+    gap: clamp(6px, .7vw, 10px);
+  }
+
+  /* Sin altura mínima: la foto se estira a toda la columna y siempre se ve
+     entera, que era el problema principal. */
+  .hotels__media { min-height: 0; }
+  .frame__card { left: clamp(-28px, -1.6vw, -14px); bottom: clamp(24px, 5vh, 64px); }
+  .frame__name { font-size: clamp(17px, 2.2vh, 24px); }
+  .frame__note { font-size: clamp(11px, 1.4vh, 13px); }
+
+  .hotels__cta {
+    margin: 0 var(--pad);
+    padding: clamp(12px, 2vh, 26px) 0 clamp(16px, 2.6vh, 34px);
+    flex: none;
+  }
+  .hotels__cta .btn {
+    padding: clamp(12px, 1.8vh, 20px) clamp(22px, 2vw, 34px);
+    font-size: clamp(11px, 1.35vh, 14px);
+  }
+}
+
 /* ============================== ANIMACIONES =============================== */
 
 @keyframes wx-spin { to { transform: rotate(360deg); } }
@@ -690,3 +775,4 @@ body.is-locked { overflow: hidden; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   html { scroll-behavior: auto; }
 }
+

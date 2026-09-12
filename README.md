@@ -43,6 +43,42 @@ idéntico sin deformarse:
   (`public/css/responsive.css`), conservando colores, tipografías y componentes:
   menú hamburguesa, héroe en vertical, tarjetas deslizables, listas apiladas.
 
+### Hotelería: la excepción
+
+Todas las secciones se componen contra el lienzo de 1440 px **menos Hotelería**,
+que se compone contra la forma real de la pantalla y ocupa exactamente una.
+
+El motivo: en monitores anchos el lienzo se amplía a 1.25×, así que esa sección
+llegaba a medir ~1800 px de alto. Se veía un titular enorme, dos hospedajes y la
+foto cortada. Escalar el bloque no servía — el diseño es casi cuadrado y la
+pantalla apaisada —, así que se recompone.
+
+El truco está al final de `styles.css`:
+
+```css
+.hotels {
+  zoom: calc(1 / var(--zoom, 1));   /* anula el zoom del lienzo */
+  height: 100vh;
+}
+```
+
+Con el zoom invertido, la sección sigue ocupando la misma caja que las demás
+(el ancho se queda en `auto`), pero por dentro **1 px = 1 px real**, así que las
+medidas en `px` y `vh` valen lo que dicen. A partir de ahí todo va con `clamp()`
+contra `vh`: titular, filas, chips y botón crecen con la pantalla.
+
+La foto lleva `min-height: 0` para estirarse a toda su columna y verse siempre
+completa, que era la queja principal.
+
+| Pantalla | Titular | Fila | Foto | Alto |
+|---|---|---|---|---|
+| 1366×700 | 59 px | 75 px | 451×486 | 1 pantalla |
+| 1440×800 | 67 px | 83 px | 476×561 | 1 pantalla |
+| 1830×880 | 74 px | 91 px | 577×597 | 1 pantalla |
+| 2560×1300 | 104 px | 118 px | 596×954 | 1 pantalla |
+
+En móvil no aplica nada: la sección recupera su altura natural.
+
 ### Interacciones
 
 | Elemento | Comportamiento |
