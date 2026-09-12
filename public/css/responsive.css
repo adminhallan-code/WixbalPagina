@@ -1,0 +1,183 @@
+/* ==========================================================================
+   Wixbal — adaptación responsiva
+   Por encima de 1100 px el lienzo de 1440 px se escala con zoom (JS) y el
+   diseño se ve exactamente igual que el original. Por debajo, el contenido
+   se reordena en columna conservando colores, tipografías y componentes.
+   ========================================================================== */
+
+@media (max-width: 1099px) {
+
+  :root { --pad: 24px; --pad-in: 24px; }
+
+  .page { width: 100%; zoom: 1; }
+
+  /* ------------------------------- Cabecera ------------------------------ */
+  .topbar { height: auto; padding: 18px var(--pad); flex-wrap: wrap; gap: 16px; }
+  .brand__mark { width: 52px; height: 52px; border-radius: 12px; }
+  .brand__mark img { width: 40px; height: 40px; }
+  .brand__name { font-size: 20px; letter-spacing: .28em; }
+
+  .burger { display: block; margin-left: auto; }
+  .topbar__right { order: 3; width: 100%; justify-content: space-between; display: none; }
+  .nav {
+    order: 4; width: 100%; display: none;
+    flex-direction: column; gap: 0;
+    border-top: 1px solid rgba(198,165,123,.35);
+  }
+  .topbar.is-open .nav,
+  .topbar.is-open .topbar__right { display: flex; }
+  .nav__link { padding: 18px 0; border-bottom: 1px solid rgba(198,165,123,.18); }
+  .topbar__right { padding-bottom: 18px; }
+  .topbar__right .btn { flex: 1; margin-left: 16px; }
+
+  /* --------------------------------- Héroe ------------------------------- */
+  .hero { height: auto; padding-bottom: 0; display: flex; flex-direction: column; }
+  .hero .stripes   { order: 1; }
+  .hero .topbar    { order: 2; }
+  .hero__content   { order: 3; }
+  .hero__photo     { order: 4; }
+  .hero__stats     { order: 5; }
+
+  .hero__ring {
+    right: -300px; top: auto; bottom: -120px; width: 560px; height: 560px; opacity: .16;
+  }
+  .rail, .rail__label, .bracket { display: none; }
+  .hero__content .rule { display: none; }
+
+  .hero__content {
+    position: static; padding: 48px var(--pad) 0; max-width: none;
+  }
+  .hero__title { margin-top: 22px; font-size: clamp(40px, 11vw, 78px); line-height: .98; }
+  .hero__lede { margin-top: 24px; font-size: 17px; max-width: none; }
+  .hero__cta { margin-top: 32px; gap: 18px; }
+  .hero__cta .btn { padding: 18px 26px; font-size: 13px; }
+
+  .hero__photo {
+    position: static; transform: none;
+    width: min(420px, 78vw); height: min(420px, 78vw);
+    margin: 48px auto 0; padding: 10px;
+    box-shadow: 0 0 0 10px var(--green-900), 0 0 0 11.5px rgba(198,165,123,.55);
+  }
+
+  .hero__stats {
+    position: static; margin-top: 56px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .stat { padding: 20px var(--pad); border-bottom: 1px solid rgba(198,165,123,.3); }
+  .stat:first-child { padding-left: var(--pad); padding-right: var(--pad); }
+  .stat:nth-child(2n) { border-right: 0; }
+  .stat__value { font-size: 19px; }
+
+  /* ------------------------------- Servicios ----------------------------- */
+  .services__head { flex-direction: column; align-items: flex-start; gap: 32px; padding-top: 48px; }
+  .display { font-size: clamp(52px, 15vw, 118px); }
+  .display__indent { padding-left: 0; }
+  .services__head-right { max-width: none; width: 100%; }
+  .services__blurb p { font-size: 18px; }
+
+  .services__rail { margin-top: 36px; }
+  .track { padding: 24px var(--pad) 56px; scroll-padding: 0 var(--pad); }
+  .card { flex: 0 0 min(300px, 78vw); height: 400px; }
+  .card--offset { margin-top: 0; }
+
+  .services__foot { flex-direction: column; align-items: flex-start; gap: 22px; }
+  .ornament { margin-top: 64px; padding-bottom: 64px; gap: 20px; }
+
+  /* --------------------------------- Acerca ------------------------------ */
+  .about { height: auto; padding-bottom: 48px; }
+  .about__bg { height: 520px; inset: 0 0 auto 0; }
+  .about__scrim {
+    inset: 0 0 auto 0; height: 520px;
+    background:
+      linear-gradient(90deg, rgba(31,51,32,.92) 0%, rgba(31,51,32,.7) 60%, rgba(31,51,32,.45) 100%),
+      linear-gradient(0deg, rgba(31,51,32,1) 0%, rgba(31,51,32,0) 55%);
+  }
+  .rail--about, .rail__label--about, .bracket--about { display: none; }
+
+  .about__head { position: static; padding: 72px var(--pad) 0; }
+  .about__head-row { flex-direction: column; gap: 20px; margin-top: 20px; }
+  .about__title { font-size: clamp(34px, 9vw, 56px); max-width: none; }
+  .about__lede { margin: 0; max-width: none; font-size: 16px; }
+
+  .about__panel { position: static; width: auto; padding: 40px var(--pad) 0; }
+  .about__name { font-size: clamp(42px, 12vw, 84px); }
+  .about__body { font-size: 16px; max-width: none; }
+  .about__facts { gap: 32px; flex-wrap: wrap; }
+  .fact__value { font-size: 19px; white-space: normal; }
+
+  .about__seal {
+    position: static; margin: 36px auto 0;
+    width: 96px; height: 96px;
+    box-shadow: 0 0 0 10px var(--green-900), 0 0 0 11.5px rgba(198,165,123,.55);
+  }
+  .about__seal img { width: 66px; height: 66px; }
+
+  .about__picker {
+    position: static; grid-template-columns: 1fr; gap: 0;
+    padding: 40px var(--pad) 0;
+  }
+  .agency { opacity: 1; }
+  .agency__name { font-size: 19px; }
+
+  /* ------------------------------- Hotelería ----------------------------- */
+  .hotels__head { flex-direction: column; align-items: flex-start; gap: 24px; padding-top: 48px; }
+  .hotels__lede { margin: 0; max-width: none; font-size: 18px; }
+  .hotels__grid { grid-template-columns: 1fr; gap: 40px; padding-top: 40px; }
+
+  .hrow { grid-template-columns: 44px 1fr; gap: 8px 20px; padding: 26px 0; }
+  .hrow__num { font-size: 26px; }
+  .hrow__title { font-size: clamp(24px, 6vw, 36px); }
+  .hrow__text { font-size: 14px; max-width: none; }
+  .hrow__price { grid-column: 2; text-align: left; }
+  .hrow__price-value { font-size: 22px; }
+
+  .hotels__media { min-height: 420px; }
+  .frame__card { left: 12px; right: 12px; bottom: 24px; max-width: none; padding: 16px 18px; }
+  .frame__name { font-size: 20px; }
+  .hotels__cta { margin-top: 48px; padding-bottom: 64px; }
+
+  /* --------------------------------- Footer ------------------------------ */
+  .footer__top { grid-template-columns: 1fr; gap: 36px; padding-top: 64px; }
+  .footer__title { font-size: clamp(38px, 11vw, 76px); }
+  .footer__lede { max-width: none; font-size: 16px; }
+  .field { flex-wrap: wrap; }
+  .field input { flex: 1 1 200px; padding: 16px 18px; }
+  .field button { padding: 16px 22px; flex: 1 1 auto; justify-content: center; }
+  .footer__zig { margin-top: 56px; }
+
+  .footer__cols { grid-template-columns: 1fr 1fr; gap: 36px; padding-top: 48px; }
+  .footer__about { grid-column: 1 / -1; }
+  .footer__blurb { max-width: none; }
+
+  .footer__bottom {
+    flex-direction: column; align-items: flex-start; gap: 18px;
+    margin-top: 48px; text-align: left;
+  }
+  .footer__legal { gap: 20px; flex-wrap: wrap; }
+
+  /* ---------------------------------- Modal ------------------------------ */
+  .modal { padding: 16px; align-items: flex-start; }
+  .modal__scale { zoom: 1; width: 100%; }
+  .modal__card { grid-template-columns: 1fr; min-height: 0; width: 100%; }
+  .modal__media { min-height: 260px; }
+  .modal__media-inner { inset: 12px; }
+  .modal__body { padding: 32px var(--pad) 36px; gap: 22px; }
+  .modal__title { font-size: clamp(32px, 8vw, 56px); }
+  .modal__text { font-size: 16px; max-width: none; }
+  .modal__facts { grid-template-columns: 1fr; gap: 18px; }
+  .modal__fact { font-size: 22px; }
+  .modal__cta .btn { flex: 1 1 200px; }
+  .modal__corner { width: 32px; height: 32px; }
+}
+
+/* Teléfonos estrechos */
+@media (max-width: 560px) {
+  .hero__stats { grid-template-columns: 1fr; }
+  .stat { border-right: 0; }
+  .footer__cols { grid-template-columns: 1fr; }
+  .hero__cta { flex-direction: column; align-items: stretch; }
+  .hero__cta .btn { justify-content: center; }
+  .link-underline { align-self: flex-start; }
+  .chips { gap: 8px; }
+  .chip { padding: 10px 14px; font-size: 10px; }
+}
