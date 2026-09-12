@@ -145,6 +145,32 @@
     document.documentElement.style.setProperty('--zoom', zoom);
   }
 
+  /* Hotelería ocupa una pantalla escalando su lienzo entero con un solo factor,
+     en vez de recomprimir cada medida por separado: así el diseño conserva sus
+     proporciones y se ve más pequeño, no achatado. */
+  function fitHotels() {
+    var canvas = $('.hotels__canvas');
+    if (!canvas) return;
+
+    if (document.documentElement.clientWidth < BREAKPOINT) {
+      canvas.style.zoom = '';
+      return;
+    }
+
+    // Altura natural del lienzo, sin escalar, en píxeles de diseño.
+    canvas.style.zoom = '1';
+    var natural = canvas.offsetHeight;
+    if (!natural) return;
+
+    var pageZoom = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--zoom')
+    ) || 1;
+    var screenHeight = document.documentElement.clientHeight / pageZoom;
+
+    // Nunca se agranda por encima del diseño original.
+    canvas.style.zoom = Math.min(1, screenHeight / natural);
+  }
+
   function fitModal() {
     var w = document.documentElement.clientWidth;
     var h = document.documentElement.clientHeight;
@@ -384,6 +410,7 @@
   function init() {
     buildRing();
     fitPage();
+    fitHotels();
     fitModal();
     initBurger();
     initCarousel();
@@ -395,8 +422,13 @@
     var raf;
     window.addEventListener('resize', function () {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(function () { fitPage(); fitModal(); });
+      raf = requestAnimationFrame(function () { fitPage(); fitHotels(); fitModal(); });
     });
+
+    // Las tipografías cambian la altura natural del lienzo al cargar.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fitHotels);
+    }
   }
 
   if (document.readyState === 'loading') {
