@@ -77,7 +77,8 @@
 
   .services__rail { margin-top: 36px; }
   .track { padding: 24px var(--pad) 56px; scroll-padding: 0 var(--pad); }
-  .card { flex: 0 0 min(300px, 78vw); height: 400px; }
+  .services__rail { display: block; }
+  .card { flex: 0 0 min(300px, 78vw); height: 380px; max-height: none; }
   .card--offset { margin-top: 0; }
 
   .services__foot { flex-direction: column; align-items: flex-start; gap: 22px; }
