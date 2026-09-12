@@ -823,7 +823,7 @@ body.is-locked { overflow: hidden; }
    ========================================================================== */
 
 @media (min-width: 1100px) {
-  .services .display { font-size: 96px; }
+  .services .display { font-size: 72px; }
 
   .services__head { padding-top: 48px; }
   .services__rail { margin-top: 40px; }
