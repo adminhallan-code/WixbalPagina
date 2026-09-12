@@ -43,10 +43,11 @@ idéntico sin deformarse:
   (`public/css/responsive.css`), conservando colores, tipografías y componentes:
   menú hamburguesa, héroe en vertical, tarjetas deslizables, listas apiladas.
 
-### Hotelería: la excepción
+### Acerca y Hotelería: las excepciones
 
-Todas las secciones se componen contra el lienzo de 1440 px **menos Hotelería**,
-que se compone contra la forma real de la pantalla y ocupa exactamente una.
+Todas las secciones se componen contra el lienzo de 1440 px **menos Acerca y
+Hotelería**, que se componen contra la forma real de la pantalla y ocupan
+exactamente una.
 
 El motivo: en monitores anchos el lienzo se amplía a 1.25×, así que esa sección
 llegaba a medir ~1800 px de alto. Se veía un titular enorme, dos hospedajes y la
@@ -77,7 +78,27 @@ completa, que era la queja principal.
 | 1830×880 | 74 px | 91 px | 577×597 | 1 pantalla |
 | 2560×1300 | 104 px | 118 px | 596×954 | 1 pantalla |
 
-En móvil no aplica nada: la sección recupera su altura natural.
+**Acerca** usa la misma técnica, pero como su contenido ya está anclado a los
+bordes (encabezado arriba, panel y selector abajo), solo hubo que ajustar las
+distancias: lo que se recorta es el aire entre bloques, no las piezas.
+
+Ahí el titular y el nombre de la agencia se multiplican por `--zoom` a
+propósito, para que conserven **exactamente** el tamaño que ya tenían en
+pantalla; el `min()` contra `vh` solo entra en monitores bajos, donde si no se
+solaparían:
+
+```css
+.about__title { font-size: min(calc(64px * var(--zoom, 1)), 9vh); }
+```
+
+| Pantalla | «Tres agencias…» | Nombre agencia |
+|---|---|---|
+| 1366×700 | 60 px | 90 px |
+| 1440×800 | 63 px | 95 px |
+| 1830×880 | 79 px | 119 px |
+| 2560×1300 | 80 px | 120 px |
+
+En móvil no aplica nada: las secciones recuperan su altura natural.
 
 ### Interacciones
 
