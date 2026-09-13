@@ -14,12 +14,29 @@ desplegarse en **Hostinger** (aplicación Node.js).
 server.js              Servidor Express (compresión, caché, fallback a index.html)
 package.json           Dependencias y script de arranque
 public/
-  index.html           Portada completa
-  css/styles.css       Diseño (lienzo de 1440 px, valores exactos del diseño original)
-  css/responsive.css   Adaptación a tablet y móvil
-  js/app.js            Anillo giratorio, carrusel, modal, rotación de agencias, hotelería
+  index.html           Portada
+  servicios.html       Catálogo 2026 + configurador de estancia
+  css/styles.css       Diseño común (lienzo de 1440 px, valores del diseño original)
+  css/servicios.css    Clases propias de la página de Servicios
+  css/responsive.css   Adaptación a tablet y móvil de la portada
+  js/app.js            Portada: anillo, carrusel, modal, agencias, hotelería
+  js/servicios.js      Servicios: filtros, modal y configurador de precio
   assets/              Logos (Wixbal, Balam, Wolfs, Ixkanul)
 ```
+
+## Páginas
+
+| Ruta | Archivo | Contenido |
+|---|---|---|
+| `/` | `index.html` | Portada |
+| `/servicios` | `servicios.html` | Catálogo de 11 rutas con filtro por agencia, modal de detalle y configurador de estancia (región → habitación → noches → total) |
+
+El `express.static` va con `extensions: ['html']`, así que `/servicios` resuelve
+solo; no hace falta declarar la ruta.
+
+La página de Servicios usa nombres de clase propios (`.cat`, `.stay`, `.tour`,
+`.smodal`) a propósito: si reutilizara `.services` o `.hotels` heredaría las
+reglas de tamaño de pantalla de la portada, que no le corresponden.
 
 ## Desarrollo local
 
@@ -146,6 +163,12 @@ Las fotos que faltan son:
 | Servicio IV | Camioneta en carretera de montaña |
 | Acerca (fondo) | Una por agencia — ver `agencies[].photo` en `public/js/app.js` |
 | Hotelería | Una por hospedaje — ver `hotels[].photo` en `public/js/app.js` |
+| Servicios · rutas | Once, una por ruta — ver `TOURS[].photo` en `public/js/servicios.js` |
+| Servicios · regiones | Cuatro — ver `REGIONS[].photo` en `public/js/servicios.js` |
+
+En la página de Servicios los marcadores se generan desde JS, así que ahí la
+sustitución se hace en `servicios.js` (cambiando `photo` por una ruta de imagen
+y ajustando el nodo que se crea), no en el HTML.
 
 ---
 

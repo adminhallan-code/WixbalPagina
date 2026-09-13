@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicios · Wixbal</title>
+<meta name="description" content="Catálogo 2026 de Wixbal: todas las rutas de Balam Expeditions, Wolfs Travel Agency e Ixkanul Tours en un solo lugar, con hospedaje por región.">
+<meta name="theme-color" content="#1F3320">
+<link rel="icon" href="/assets/wixbal.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Marcellus&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css?v=12">
+<link rel="stylesheet" href="/css/servicios.css?v=12">
+<link rel="stylesheet" href="/css/responsive.css?v=12">
+</head>
+<body>
+
+<a class="skip" href="#catalogo">Saltar al contenido</a>
+
+<div class="page" id="page">
+
+  <section class="cat">
+    <div class="stripes">
+      <span class="stripe stripe--rust"></span>
+      <span class="stripe stripe--gold"></span>
+      <span class="stripe stripe--cream"></span>
+      <span class="stripe stripe--zig"></span>
+    </div>
+
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand__mark"><img src="/assets/wixbal.png" alt="Wixbal"></span>
+        <span class="brand__text">
+          <span class="brand__name">WIXBAL</span>
+          <span class="brand__tag">Viajes · Guatemala</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <a class="nav__link" href="/#destinos"><span class="dots"><i></i></span>Destinos</a>
+        <a class="nav__link nav__link--active" href="/servicios" aria-current="page"><span class="dots"><i></i><i></i></span>Servicios</a>
+        <a class="nav__link" href="/#comunidades"><span class="dots"><i></i><i></i><i></i></span>Comunidades</a>
+        <a class="nav__link" href="/#acerca"><span class="bar"></span>Nosotros</a>
+      </nav>
+
+      <div class="topbar__right">
+        <span class="lang">ES <span>/ EN</span></span>
+        <a class="btn btn--gold" href="/#cotizar">Reservar</a>
+      </div>
+
+      <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" data-burger>
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div class="cat__hero" id="catalogo">
+      <span class="bracket bracket--tl cat__bracket"></span>
+      <span class="bracket bracket--tr cat__bracket"></span>
+      <div class="cat__hero-row">
+        <div>
+          <p class="eyebrow eyebrow--gold"><span class="diamond"></span>Wixbal · Catálogo 2026<span class="rule"></span></p>
+          <h1 class="cat__title">Servicios</h1>
+        </div>
+        <p class="cat__lede">Todas las rutas de las tres agencias en un solo lugar. Filtra por agencia y abre cualquiera para ver el detalle.</p>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="filters__inner">
+        <div class="filters__chips" role="group" aria-label="Filtrar por agencia">
+          <button class="fchip is-on" type="button" data-filter="all">
+            <span class="dots dots--cur"><i></i><i></i><i></i></span>Todas
+          </button>
+          <button class="fchip fchip--logo" type="button" data-filter="balam">
+            <span class="fchip__logo"><img src="/assets/balam.png" alt=""></span>Balam
+          </button>
+          <button class="fchip fchip--logo" type="button" data-filter="wolfs">
+            <span class="fchip__logo"><img class="logo--wolfs" src="/assets/wolfs.png" alt=""></span>Wolfs
+          </button>
+          <button class="fchip fchip--logo" type="button" data-filter="ixkanul">
+            <span class="fchip__logo"><img src="/assets/ixkanul.png" alt=""></span>Ixkanul
+          </button>
+        </div>
+        <p class="filters__count"><span class="rule"></span><span data-count></span></p>
+      </div>
+    </div>
+
+    <div class="cat__grid-wrap">
+      <div class="cat__grid" data-grid aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="stay" id="hoteleria">
+    <div class="zig zig--green"></div>
+
+    <div class="stay__head">
+      <div>
+        <p class="eyebrow eyebrow--green"><span class="dots dots--rust"><i></i><i></i><i></i></span>Arma tu estancia</p>
+        <h2 class="stay__display">Hote<span class="stay__display-alt">lería</span></h2>
+      </div>
+      <p class="stay__lede">Elige la región, el tipo de habitación y las noches. El precio se arma frente a ti.</p>
+    </div>
+
+    <div class="regions" role="group" aria-label="Elegir región">
+      <button class="region is-on" type="button" data-region="0">
+        <span class="region__num">I</span>
+        <span class="region__text">
+          <span class="region__dept">Sacatepéquez</span>
+          <span class="region__name">Antigua</span>
+        </span>
+      </button>
+      <button class="region" type="button" data-region="1">
+        <span class="region__num">II</span>
+        <span class="region__text">
+          <span class="region__dept">Sololá</span>
+          <span class="region__name">Lago de Atitlán</span>
+        </span>
+      </button>
+      <button class="region" type="button" data-region="2">
+        <span class="region__num">III</span>
+        <span class="region__text">
+          <span class="region__dept">Chimaltenango</span>
+          <span class="region__name">Acatenango</span>
+        </span>
+      </button>
+      <button class="region" type="button" data-region="3">
+        <span class="region__num">IV</span>
+        <span class="region__text">
+          <span class="region__dept">Petén</span>
+          <span class="region__name">Tikal</span>
+        </span>
+      </button>
+    </div>
+
+    <div class="stay__panel">
+      <div class="stay__photo" data-region-panel>
+        <div class="slot slot--bare" data-slot="" data-region-slot></div>
+        <div class="stay__scrim"></div>
+        <span class="stay__corner"></span>
+        <div class="stay__caption">
+          <p class="eyebrow eyebrow--gold"><span class="diamond"></span><span data-region-field="place"></span></p>
+          <div class="stay__name" data-region-field="name"></div>
+          <p class="stay__body" data-region-field="body"></p>
+          <div class="stay__perks" data-region-perks></div>
+        </div>
+      </div>
+
+      <div class="builder">
+        <div class="builder__step">
+          <p class="builder__label">01 · Tipo de habitación</p>
+          <div class="rooms" data-rooms role="group" aria-label="Tipo de habitación"></div>
+        </div>
+
+        <div class="builder__step">
+          <p class="builder__label">02 · Noches</p>
+          <div class="nights">
+            <div class="nights__value">
+              <span class="nights__n" data-nights>2</span>
+              <span class="nights__word" data-nights-word>noches</span>
+            </div>
+            <div class="nights__btns">
+              <button class="nights__btn" type="button" data-nights-minus aria-label="Quitar una noche">−</button>
+              <button class="nights__btn nights__btn--solid" type="button" data-nights-plus aria-label="Añadir una noche">+</button>
+            </div>
+          </div>
+          <div class="nights__dots" data-night-dots aria-hidden="true"></div>
+        </div>
+
+        <div class="builder__total">
+          <div class="total">
+            <div>
+              <p class="total__label">Total estimado</p>
+              <div class="total__value" data-total>Q1,360</div>
+              <p class="total__summary" data-summary></p>
+            </div>
+            <div class="total__mark">
+              <span class="total__dots"><i></i><i></i></span>
+              <span class="total__bar"></span>
+            </div>
+          </div>
+          <a class="btn btn--green btn--lg builder__cta" href="/#cotizar">Reservar estancia <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament stay__ornament">
+      <span class="ornament__rule"></span>
+      <span class="ornament__mid">
+        <span class="diamond diamond--rust"></span>
+        <span class="ornament__lozenge"><i></i></span>
+        <span class="diamond diamond--rust"></span>
+      </span>
+      <span class="ornament__rule"></span>
+    </div>
+  </section>
+
+</div>
+
+<div class="smodal" data-modal hidden>
+  <div class="smodal__scale">
+    <div class="smodal__card" role="dialog" aria-modal="true" aria-labelledby="smodal-title">
+      <span class="smodal__corner smodal__corner--tl"></span>
+      <span class="smodal__corner smodal__corner--br"></span>
+
+      <div class="smodal__media"><div class="smodal__media-inner"><div class="slot slot--bare" data-slot="" data-modal-slot></div></div></div>
+
+      <div class="smodal__body">
+        <div class="smodal__bar">
+          <p class="eyebrow eyebrow--rust"><span class="diamond diamond--rust" data-modal-dot></span><span data-modal-field="agencyPlace"></span></p>
+          <button class="smodal__close" type="button" data-close aria-label="Cerrar">✕</button>
+        </div>
+        <h3 class="smodal__title" id="smodal-title" data-modal-field="title"></h3>
+        <p class="smodal__text" data-modal-field="body"></p>
+        <div class="smodal__facts">
+          <div><p class="fact__label fact__label--dark">Duración</p><div class="smodal__fact" data-modal-field="dur"></div></div>
+          <div><p class="fact__label fact__label--dark">Grupo</p><div class="smodal__fact" data-modal-field="group"></div></div>
+          <div><p class="fact__label fact__label--dark">Desde</p><div class="smodal__fact" data-modal-field="price"></div></div>
+        </div>
+        <div class="smodal__tags" data-modal-tags></div>
+        <div class="smodal__cta">
+          <a class="btn btn--green btn--xl" href="/#cotizar">Reservar <span class="arrow">→</span></a>
+          <a class="btn btn--outline btn--xl" href="/#cotizar">Consultar fechas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/servicios.js?v=12" defer></script>
+</body>
+</html>
