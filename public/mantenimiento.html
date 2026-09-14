@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wixbal · Volvemos pronto</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F3320">
+<link rel="icon" href="/assets/wixbal.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Marcellus&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-900: #1F3320;
+    --green-700: #2E4A2F;
+    --gold: #C6A57B;
+    --cream: #F3EDE2;
+    --rust: #B5573A;
+    --sans: 'Manrope', system-ui, -apple-system, sans-serif;
+    --serif: 'Marcellus', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    background-color: var(--green-900);
+    background-image: radial-gradient(circle at 1px 1px, rgba(198,165,123,.18) 1px, transparent 1.6px);
+    background-size: 26px 26px;
+    color: var(--cream);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .stripes { display: flex; flex-direction: column; flex: none; }
+  .stripes span { display: block; }
+  .s1 { height: 6px; background: var(--rust); }
+  .s2 { height: 4px; background: var(--gold); }
+  .s3 { height: 3px; background: var(--cream); }
+  .s4 {
+    height: 12px;
+    background-color: var(--green-700);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'><path d='M0 10 6 2 12 10 18 2 24 10' fill='none' stroke='%23C6A57B' stroke-width='2'/></svg>");
+    background-repeat: repeat-x;
+  }
+
+  main {
+    flex: 1;
+    display: grid; place-items: center;
+    padding: 48px 24px;
+  }
+
+  .card { width: 100%; max-width: 620px; text-align: center; }
+
+  .mark {
+    width: 96px; height: 96px; margin: 0 auto;
+    border: 1.5px solid var(--gold); border-radius: 20px;
+    display: grid; place-items: center; background: var(--cream);
+    box-shadow: inset 0 0 0 4px var(--cream), inset 0 0 0 5px rgba(46,74,47,.35);
+    overflow: hidden;
+  }
+  .mark img { width: 74px; height: 74px; object-fit: cover; object-position: top; display: block; }
+
+  .name {
+    margin-top: 22px;
+    font: 400 30px/1 var(--serif); letter-spacing: .32em;
+    padding-left: .32em;
+  }
+  .tag {
+    margin-top: 10px;
+    font: 600 10px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .eyebrow {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin-top: 44px;
+    font: 600 12px/1 var(--sans); letter-spacing: .3em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .eyebrow i { width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); }
+
+  h1 {
+    margin-top: 24px;
+    font: 400 clamp(38px, 7vw, 66px)/1.02 var(--serif);
+    letter-spacing: -.01em; text-wrap: balance;
+  }
+  h1 span { color: var(--gold); }
+
+  p.lede {
+    margin: 24px auto 0; max-width: 460px;
+    font: 400 17px/1.6 var(--sans); color: rgba(243,237,226,.86); text-wrap: pretty;
+  }
+
+  .contact {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+    margin-top: 36px;
+  }
+  .contact a {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 24px;
+    border: 1.5px solid var(--gold); color: var(--gold);
+    text-decoration: none;
+    font: 700 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+    transition: background .25s, color .25s;
+  }
+  .contact a:hover { background: var(--gold); color: var(--green-900); }
+
+  .ornament {
+    display: flex; align-items: center; justify-content: center; gap: 22px;
+    margin-top: 48px;
+  }
+  .ornament .d { width: 7px; height: 7px; background: var(--rust); transform: rotate(45deg); }
+  .ornament .l {
+    width: 26px; height: 26px; border: 1.5px solid var(--gold); transform: rotate(45deg);
+    display: grid; place-items: center;
+  }
+  .ornament .l i { width: 9px; height: 9px; background: var(--gold); }
+
+  footer {
+    flex: none; padding: 24px;
+    text-align: center;
+    font: 500 11px/1.6 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(243,237,226,.55);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stripes">
+  <span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span>
+</div>
+
+<main>
+  <div class="card">
+    <div class="mark"><img src="/assets/wixbal.png" alt="Wixbal"></div>
+    <div class="name">WIXBAL</div>
+    <div class="tag">Viajes · Guatemala</div>
+
+    <p class="eyebrow"><i></i>Sitio en construcción</p>
+    <h1>Estamos armando <span>la ruta</span></h1>
+    <p class="lede">
+      Nuestro sitio está en mantenimiento y volvemos muy pronto. Mientras tanto,
+      escríbenos y te atendemos igual.
+    </p>
+
+    <div class="contact">
+      <a href="mailto:hola@wixbal.gt">hola@wixbal.gt</a>
+      <a href="tel:+50255550000">+502 5555 0000</a>
+    </div>
+
+    <div class="ornament">
+      <span class="d"></span>
+      <span class="l"><i></i></span>
+      <span class="d"></span>
+    </div>
+  </div>
+</main>
+
+<footer>© 2026 Wixbal · Antigua Guatemala, Sacatepéquez</footer>
+
+</body>
+</html>

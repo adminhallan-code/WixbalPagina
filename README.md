@@ -11,11 +11,12 @@ desplegarse en **Hostinger** (aplicación Node.js).
 ## Estructura
 
 ```
-server.js              Servidor Express (compresión, caché, fallback a index.html)
+server.js              Servidor Express (mantenimiento, compresión, caché)
 package.json           Dependencias y script de arranque
 public/
   index.html           Portada
   servicios.html       Catálogo 2026 + configurador de estancia
+  mantenimiento.html   Página pública mientras el sitio está en mantenimiento
   css/styles.css       Diseño común (lienzo de 1440 px, valores del diseño original)
   css/servicios.css    Clases propias de la página de Servicios
   css/responsive.css   Adaptación a tablet y móvil de la portada
@@ -37,6 +38,46 @@ solo; no hace falta declarar la ruta.
 La página de Servicios usa nombres de clase propios (`.cat`, `.stay`, `.tour`,
 `.smodal`) a propósito: si reutilizara `.services` o `.hotels` heredaría las
 reglas de tamaño de pantalla de la portada, que no le corresponden.
+
+## Modo mantenimiento
+
+**Está activo por defecto.** El público ve `public/mantenimiento.html` (con un
+503, para que Google no indexe la página provisional) y solo entra al sitio real
+quien tenga la clave.
+
+### Entrar a ver el sitio
+
+```
+https://TU-DOMINIO/preview?key=LA_CLAVE
+```
+
+Eso deja una cookie de 30 días (`httpOnly`), así que basta con hacerlo una vez
+por navegador. Para volver a ver el modo mantenimiento: `/preview/salir`.
+
+### La clave
+
+Se toma de la variable de entorno **`MAINTENANCE_KEY`**. Si no la defines, el
+servidor genera una al azar y la imprime en el log al arrancar — pero cambia en
+cada reinicio, así que conviene fijarla en hPanel → Node.js → Variables de
+entorno.
+
+En la cookie no se guarda la clave sino su hash, y la comparación es de tiempo
+constante.
+
+### Apagarlo
+
+Cuando el sitio esté listo, define la variable de entorno:
+
+```
+MAINTENANCE=off
+```
+
+y vuelve a desplegar. Cualquier otro valor (o sin definir) lo deja activo.
+
+`GET /health` responde `{"ok":true,"maintenance":true|false}`, útil para
+comprobar en qué modo está sin abrir el navegador.
+
+---
 
 ## Desarrollo local
 
@@ -182,8 +223,15 @@ En **hPanel → Sitio web → Node.js**:
 4. **Comando de instalación**: `npm install`
 5. **Comando de arranque**: `npm start`
 
-El servidor toma el puerto de `process.env.PORT`, que es lo que Hostinger asigna,
-así que no hay que configurar nada más. Tras cada `git push`, vuelve a desplegar
-desde hPanel (o activa el despliegue automático).
+El servidor toma el puerto de `process.env.PORT`, que es lo que Hostinger asigna.
+Tras cada `git push`, vuelve a desplegar desde hPanel (o activa el despliegue
+automático).
+
+### Variables de entorno
+
+| Variable | Para qué |
+|---|---|
+| `MAINTENANCE_KEY` | Clave de `/preview`. Fíjala para que no cambie en cada reinicio. |
+| `MAINTENANCE` | `off` para abrir el sitio al público. Sin definir = mantenimiento activo. |
 
 Comprobación rápida de que la app está viva: `GET /health` devuelve `{"ok":true}`.
